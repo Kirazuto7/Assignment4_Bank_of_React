@@ -1,6 +1,9 @@
 // src/components/Debits.js
 
-const Debits = (props) => {
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+
+/*const Debits = (props) => {
 	let debitsView = () => {
         const { debits } = props;
         return debits.map((debit) => {
@@ -20,5 +23,18 @@ const Debits = (props) => {
     	</div>
 
     )
+}*/
+
+class Debits extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Bank of React</h1>
+
+        <Link to="/">Home</Link>
+      </div>
+    );
+  }
 }
+
 export default Debits;
