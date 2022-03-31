@@ -1,4 +1,4 @@
-# bank-of-react-example-code
+# Assignment3 - Bank of React
 This repository contains a React application example on how to implement client-side routing with React Router and its components including Route, Router, Switch, Link, and Redirect.
 
 **Use the following commands to run the application**
@@ -8,3 +8,13 @@ Note: This application uses React Router version 5.
 ```npm install react-router-dom@5.3.0 react-router@5.2.1```
 - Next, run this command to start the React application:
 ```npm start```
+
+### Group Members
+| Name       | Github              |
+| --------------- | ----------------- |
+| Jordan Sukhnandan | Kirazuto7 |
+| Oscar Andrade  | OscarAnd123 |
+| Arifa Baksh | Arifa-B |
+| Alden Lee | AldenL |
+
+[Link to website](https://kirazuto7.github.io/Assignment4_Bank_of_React/)
