@@ -6,12 +6,13 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Debits from './components/Debits';
+import Credits from './components/Credits';
 import axios from 'axios';
 
 class App extends Component {
   constructor() {  // Create and initialize state
     super(); 
-    this.state = {  accountBalance: 14568.27,
+    this.state = {  accountBalance: 0,
                     currentUser: {
                                     userName: 'Joe Smith',
                                     memberSince: '07/23/96',
@@ -98,7 +99,8 @@ class App extends Component {
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance} addDebit={this.addDebit} total_debit={this.state.total_debit}/>);
+    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance} total_debit={this.state.total_debit} addDebit={this.addDebit} />);
+    const CreditsComponent = () => (<Credits credits={this.state.credits} accountBalance={this.state.accountBalance} total_credit={this.state.total_credit} addCredit={this.addCredit} />)
 
     return (
         <Router>
@@ -107,6 +109,7 @@ class App extends Component {
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
             <Route exact path="/debits" render={DebitsComponent}/>
+            <Route exact path="/credits" render={CreditsComponent}/>
           </div>
         </Router>
     );
