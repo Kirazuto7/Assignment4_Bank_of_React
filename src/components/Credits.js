@@ -14,7 +14,7 @@ class Credits extends Component {
       {
         id: "",
         description: "",
-        amount: -1,
+        amount: 0,
         date: ""
       }
     }
@@ -42,6 +42,7 @@ class Credits extends Component {
            <h3>Transaction List: {this.creditsView()}</h3>
            
            <h2>Total Amount of Credits: {this.props.total_credit}</h2>
+           <h2>Account Balance: {this.props.accountBalance}</h2>
            <Link to="/">Home</Link>
     	</div>
     );
