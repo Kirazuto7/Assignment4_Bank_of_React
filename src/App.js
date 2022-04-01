@@ -50,9 +50,9 @@ class App extends Component {
     let debits = 0;
     let credits = 0;
     this.state.debits.forEach(debit => { debits += debit.amount });
-    this.setState({total_debit: debits});
+    this.setState({total_debit: parseFloat(debits.toFixed(2))});
     this.state.credits.forEach(credit => { credits += credit.amount });
-    this.setState({total_credit: credits});
+    this.setState({total_credit: parseFloat(credits.toFixed(2))});
     let total = credits - debits;
     this.setState({accountBalance: parseFloat(total.toFixed(2))});
   }
