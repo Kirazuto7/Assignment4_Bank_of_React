@@ -34,35 +34,27 @@ class App extends Component {
   addCredit = (credit) =>
   {
     this.state.credits.push(credit);
-    this.updateCreditAmount();
+    this.setState({credits: this.state.credits});
+    this.totalBalance();
   }
 
   addDebit = (debit) =>
   {
     this.state.debits.push(debit);
-    this.updateDebitAmount();
-  }
-
-  // Update the credit amount when data is changed
-  updateCreditAmount = () =>
-  {
-    let credits = 0;
-    this.state.credits.forEach(credit => { credits += credit.amount });
-    this.setState({total_credit: credits});
-  }
-
-  // Update the debit amount when data is changed
-  updateDebitAmount = () =>
-  {
-    let debits = 0;
-    this.state.debits.forEach(debit => { debits += debit.amount });
-    this.setState({total_debit: debits});
+    this.setState({debits: this.state.debits});
+    this.totalBalance();
   }
 
   totalBalance = () =>
   {
-    let total = this.state.total_credit - this.state.total_debit;
-    this.setState({accountBalance: total.toFixed(2)});
+    let debits = 0;
+    let credits = 0;
+    this.state.debits.forEach(debit => { debits += debit.amount });
+    this.setState({total_debit: debits});
+    this.state.credits.forEach(credit => { credits += credit.amount });
+    this.setState({total_credit: credits});
+    let total = credits - debits;
+    this.setState({accountBalance: parseFloat(total.toFixed(2))});
   }
 
    //Loads the debit information from the api
@@ -87,8 +79,6 @@ class App extends Component {
         console.log(error.response.status);
       }
     }
-    this.updateDebitAmount();
-    this.updateCreditAmount();
     this.totalBalance();
   }
 
@@ -98,9 +88,9 @@ class App extends Component {
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance} total_debit={this.state.total_debit} addDebit={this.addDebit} />);
-    const CreditsComponent = () => (<Credits credits={this.state.credits} accountBalance={this.state.accountBalance} total_credit={this.state.total_credit} addCredit={this.addCredit} />)
+    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);  // Pass props to "LogIn" component
+    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance} total_debit={this.state.total_debit} addDebit={this.addDebit} totalBalance={this.totalBalance} total_credit={this.state.total_credit}/>);
+    const CreditsComponent = () => (<Credits credits={this.state.credits} accountBalance={this.state.accountBalance} total_credit={this.state.total_credit} addCredit={this.addCredit} />);
 
     return (
         <Router>
