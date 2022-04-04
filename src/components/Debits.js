@@ -8,13 +8,6 @@ class Debits extends Component {
   {
     super(props);
 
-    // Formatted string containing today's date
-    let dateFormat = new Date();
-    var day = String(dateFormat.getDate()).padStart(2, '0');
-    var month = String(dateFormat.getMonth() + 1).padStart(2, '0'); // Month index starts at 0 eg: Jan = 0, Feb = 1
-    var year = dateFormat.getFullYear();
-    dateFormat = year + '-' + month + '-' + day;
-
     this.state = 
     {
       newDebit: 
@@ -22,7 +15,7 @@ class Debits extends Component {
         id: "",
         description: "",
         amount: 0,
-        date: dateFormat
+        date: this.getCurrentDate()
       }
     }
 
@@ -30,16 +23,15 @@ class Debits extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // Generates a random id string
-  guid = () => {
-    let s4 = () => {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-    }
-    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
+  getCurrentDate = () => {
+    // Formatted string containing today's date
+    let dateFormat = new Date();
+    var day = String(dateFormat.getDate()).padStart(2, '0');
+    var month = String(dateFormat.getMonth() + 1).padStart(2, '0'); // Month index starts at 0 eg: Jan = 0, Feb = 1
+    var year = dateFormat.getFullYear();
+    dateFormat = year + '-' + month + '-' + day;
+    return dateFormat;
+  }
 
   debitsView = () => {
     return this.props.debits.map((debit) => {
@@ -55,17 +47,17 @@ class Debits extends Component {
       let inputValue = e.target.value;
       
       // Generate a random id value
-      let newID = this.guid();
+      let newID = Date.now();
       new_debit["id"] = newID;
       
       if(inputField === "description")
       {
-        new_debit[inputField] = inputValue;
+        new_debit["description"] = inputValue;
       }
 
       if(inputField === "amount") 
       {
-        new_debit[inputField] = parseFloat(inputValue);
+        new_debit["amount"] = parseFloat(inputValue);
       }
 
       this.setState({newDebit: new_debit});
@@ -78,10 +70,10 @@ class Debits extends Component {
     this.props.addDebit(this.state.newDebit);
 
     // Clear the input fields
-    let description_input = document.getElementById('description');
-    let amount_input = document.getElementById('amount');
-    description_input.value = '';
-    amount_input.value = '';
+    let description_input_field = document.getElementById('description');
+    let amount_input_field = document.getElementById('amount');
+    description_input_field.value = '';
+    amount_input_field.value = '';
 
     this.resetNewDebit();
   }
@@ -91,6 +83,8 @@ class Debits extends Component {
     let debits = {...this.state.newDebit}
     debits.description = "";
     debits.amount = 0;
+    debits.id = "";
+    debits.date = this.getCurrentDate();
     this.setState({newDebit: debits});
   }
  

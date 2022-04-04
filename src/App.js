@@ -89,7 +89,7 @@ class App extends Component {
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);  // Pass props to "LogIn" component
-    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance} total_debit={this.state.total_debit} addDebit={this.addDebit} totalBalance={this.totalBalance} total_credit={this.state.total_credit}/>);
+    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance} total_debit={this.state.total_debit} addDebit={this.addDebit} />);
     const CreditsComponent = () => (<Credits credits={this.state.credits} accountBalance={this.state.accountBalance} total_credit={this.state.total_credit} addCredit={this.addCredit} />);
 
     return (
