@@ -16,3 +16,38 @@ code {
 input, button {
 	margin: 5px;
 }
+.navbar{
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 5px;
+}
+
+.navbar p{
+  font-size: 20px;
+  color: silver;
+}
+h1.header{
+  padding-top: 8%;
+}
+
+.User{
+  font-size: 20px;
+}
+
+.Membership{
+  font-size: 20px;
+}
+
+table.bankInfo{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 10px;
+}
