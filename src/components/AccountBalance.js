@@ -5,8 +5,8 @@ import React, {Component} from 'react';
 class AccountBalance extends Component {
   render() {
     return (
-        <div>
-          Balance: {this.props.accountBalance}
+        <div class="container">
+          Your Account Balance: ${this.props.accountBalance}
         </div>
     );
   }

@@ -16,3 +16,45 @@ code {
 input, button {
 	margin: 5px;
 }
+
+.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+}
+
+#main-header{
+  background-color:rgb(23, 78, 160);
+  color:#fff;
+
+}
+
+#navbar{
+  background-color:#333;
+  color:#fff;
+  margin-bottom: 50px;
+}
+
+#navbar ul{
+  padding:0;
+  list-style:none;
+}
+
+#navbar li{
+  display:inline;
+}
+
+#navbar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:18px;
+  padding-right:15px;
+}
+
+#main-footer {
+  background:#333;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+  margin-top:640px;
+}
