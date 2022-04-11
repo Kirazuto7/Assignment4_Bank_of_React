@@ -2,6 +2,8 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './Credits.css';
+
 
 class Credits extends Component {
   constructor(props)
@@ -38,6 +40,25 @@ class Credits extends Component {
     return this.props.credits.map((credit) => {
         let date = credit.date.slice(0,10);
         return <li key={credit.id}>{credit.amount} {credit.description} {date}</li>
+    }) 
+  }
+//retrieve credit amount, description and date separately
+  descriptionView = () => {
+    return this.props.credits.map((credit) => {
+        return <p key={credit.id}>{credit.description}</p>
+    }) 
+  }
+
+  priceView = () => {
+    return this.props.credits.map((credit) => {
+        return <p key={credit.id}>{credit.amount}</p> 
+    }) 
+  }
+
+  dateView = () => {
+    return this.props.credits.map((credit) => {
+      let date = credit.date.slice(0,10);
+      return <p key={credit.id}>{date}</p> 
     }) 
   }
 
@@ -85,22 +106,42 @@ class Credits extends Component {
     this.setState({newCredit: credits});
   }
 
- 
   render() {
     return (
       <div>
     	   <h1>Credits</h1>
     	 
            <form onSubmit={this.handleSubmit}>
-             <input id="description" type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
-             <input id="amount" type="number" name="amount" step="0.01" onChange={this.handleChange} value={this.state.amount}/>
+             <h2> Enter a New Transaction </h2>
+             <input id="description" type="text" placeholder="Enter Item Name" name="description" onChange={this.handleChange} value={this.state.description}/>
+             <input id="amount" type="number" placeholder="Enter Item Price" name="amount" step="0.01" onChange={this.handleChange} value={this.state.amount}/>
              <button type="submit">Add Credit</button>
            </form>
-           <h3>Transaction List: {this.creditsView()}</h3>
+           <h2> View All Transactions:</h2>
+           {/* <h3>Transaction List: {this.creditsView()}</h3> */}
            
-           <h2>Total Amount of Credits: {this.props.total_credit}</h2>
-           <h2>Account Balance: {this.props.accountBalance}</h2>
-           <Link to="/">Home</Link>
+           <div className = "row">
+             <div className = "column">
+               <h3 className='column-headers'>Credit Amount</h3>
+               <h4>{this.priceView()}</h4>
+              </div>
+              
+              <div className ="column">
+                <h3 className='column-headers'>Item Description</h3>
+                <h4> {this.descriptionView()} </h4>
+              </div>
+              
+              <div className ="column" >
+                <h3 className='column-headers'>Date Added</h3>
+                <h4> {this.dateView()} </h4>
+              </div>
+            </div>
+         
+          <h2>Total Amount of Credits: {this.props.total_credit}</h2>
+          <h2>Account Balance: {this.props.accountBalance}</h2>
+
+          <Link to="/"><button>Home</button></Link>
+
     	</div>
     );
   }
