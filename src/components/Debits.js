@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './Debits.css';
 
 class Debits extends Component {
   constructor(props)
@@ -37,6 +38,26 @@ class Debits extends Component {
     return this.props.debits.map((debit) => {
         let date = debit.date.slice(0,10);
         return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
+    }) 
+  }
+
+  //get debit amount, description and date separately
+  amountView = () => {
+    return this.props.debits.map((debit) => {
+        return <p key={debit.id}>{debit.amount}</p>
+    }) 
+  }
+
+  descriptionView = () => {
+    return this.props.debits.map((debit) => {
+        return <p key={debit.id}>{debit.description}</p>
+    }) 
+  }
+
+  dateView = () => {
+    return this.props.debits.map((debit) => {
+        let date = debit.date.slice(0,10);
+        return <p key={debit.id}>{date}</p>
     }) 
   }
 
@@ -92,17 +113,37 @@ class Debits extends Component {
     return (
       <div>
     	   <h1>Debits</h1>
-    	 
            <form onSubmit={this.handleSubmit}>
-             <input id="description" type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
-             <input id="amount" type="number" name="amount" step="0.01" onChange={this.handleChange} value={this.state.amount}/>
+           <h2> Enter a New Transaction </h2>
+             <input id="description" type="text" placeholder="Enter Item Name" name="description" onChange={this.handleChange} value={this.state.description}/>
+             <input id="amount" type="number" placeholder="Enter Item Price" name="amount" step="0.01" onChange={this.handleChange} value={this.state.amount}/>
              <button type="submit" >Add Debit</button>
            </form>
-           <h3>Transaction List: {this.debitsView()}</h3>
+
+           <h2> View All Transactions:</h2>
+           {/* <h3>Transaction List: {this.debitsView()}</h3> */}
+
+           <div className = "row">
+             <div className = "column">
+               <h3 className='column-headers'>Debit Amount</h3>
+               <h4>{this.amountView()}</h4>
+              </div>
+              
+              <div className ="column">
+                <h3 className='column-headers'>Item Description</h3>
+                <h4> {this.descriptionView()} </h4>
+              </div>
+              
+              <div className ="column" >
+                <h3 className='column-headers'>Date Added</h3>
+                <h4> {this.dateView()} </h4>
+              </div>
+            </div>
            
            <h2>Total Amount of Debits: {this.props.total_debit}</h2>
            <h2>Account Balance: {this.props.accountBalance}</h2>
-           <Link to="/">Home</Link>
+           
+           <Link to="/"><button>Home</button></Link>
     	</div>
     );
   }
