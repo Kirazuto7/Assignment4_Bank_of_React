@@ -2,6 +2,7 @@
 // The LogIn component is used to demonstrate the use of Redirect.
 
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 
 class LogIn extends Component {
@@ -40,6 +41,22 @@ class LogIn extends Component {
     // Render the login form
     return (
       <div>
+        <header id="main-header">
+        <div class="container">
+            <h1>Bank of React</h1>
+        </div>
+      </header>
+
+    <nav id="navbar">
+      <div class="container">
+          <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/credits">Credits</Link></li>
+              <li><Link to="/debits">Debits</Link></li>
+              <li><Link to="/userProfile">User Profile</Link></li>
+          </ul>
+      </div>
+    </nav>
         <h1>Login</h1>
 
         <form onSubmit={this.handleSubmit}>

@@ -6,6 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("images//moneybackground.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white
 }
 
 code {
@@ -28,9 +34,6 @@ input, button {
 .navbar p{
   font-size: 20px;
   color: silver;
-}
-h1.header{
-  padding-top: 8%;
 }
 
 .User{
@@ -91,5 +94,5 @@ td, th {
   color:#fff;
   text-align:center;
   padding:20px;
-  margin-top:640px;
+  margin-top:80px;
 }
