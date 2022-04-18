@@ -112,6 +112,22 @@ class Debits extends Component {
   render() {
     return (
       <div>
+        <header id="main-header">
+        <div class="container">
+            <h1>Bank of React</h1>
+        </div>
+      </header>
+
+    <nav id="navbar">
+      <div class="container">
+          <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/credits">Credits</Link></li>
+              <li><Link to="/userProfile">User Profile</Link></li>
+          </ul>
+      </div>
+    </nav>
     	   <h1>Debits</h1>
            <form onSubmit={this.handleSubmit}>
            <h2> Enter a New Transaction </h2>
@@ -143,7 +159,6 @@ class Debits extends Component {
            <h2>Total Amount of Debits: {this.props.total_debit}</h2>
            <h2>Account Balance: {this.props.accountBalance}</h2>
            
-           <Link to="/"><button>Home</button></Link>
     	</div>
     );
   }

@@ -109,6 +109,22 @@ class Credits extends Component {
   render() {
     return (
       <div>
+        <header id="main-header">
+        <div class="container">
+            <h1>Bank of React</h1>
+        </div>
+      </header>
+
+    <nav id="navbar">
+      <div class="container">
+          <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/debits">Debits</Link></li>
+              <li><Link to="/userProfile">User Profile</Link></li>
+          </ul>
+      </div>
+    </nav>
     	   <h1>Credits</h1>
     	 
            <form onSubmit={this.handleSubmit}>
@@ -118,7 +134,6 @@ class Credits extends Component {
              <button type="submit">Add Credit</button>
            </form>
            <h2> View All Transactions:</h2>
-           {/* <h3>Transaction List: {this.creditsView()}</h3> */}
            
            <div className = "row">
              <div className = "column">
@@ -139,8 +154,6 @@ class Credits extends Component {
          
           <h2>Total Amount of Credits: {this.props.total_credit}</h2>
           <h2>Account Balance: {this.props.accountBalance}</h2>
-
-          <Link to="/"><button>Home</button></Link>
 
     	</div>
     );
